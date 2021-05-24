@@ -1,6 +1,7 @@
 ﻿using CrudAPI.Data;
 using CrudAPI.Model;
 using CrudAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,7 +24,8 @@ namespace CrudAPI.Controllers
       }
       [HttpPost]
       [Route("login")]
-      public async Task<ActionResult<dynamic>> Authenticate([FromBody] User model)
+      [AllowAnonymous]
+      public ActionResult<dynamic> Authenticate([FromBody] User model)
       {
         
          var user = _userRepository.FindByUserName(model.Username);
@@ -48,6 +50,37 @@ namespace CrudAPI.Controllers
             user = user,
             token = token
          };
+      }
+
+      [HttpPost]
+      [Route("CadastrarUser")]
+      [Authorize(Roles = "Gerente")]
+      public ActionResult<dynamic> CadastrarUser([FromBody] User model)
+      {
+         if (model == null)
+         {
+            return NotFound(new { message = "Usuário ou senha inválidos" });
+         }
+
+         if (model.UserId > 0)
+         {
+            return NotFound(new { message = "O campo UserId não deve ser informado" });
+         }
+
+
+         try
+         {
+            bool isOk = _userRepository.Insert(model);
+            return Ok("Usuário cadastrado com sucesso!");
+         }
+         catch (Exception)
+         {
+            return BadRequest("Erro ao cadastrar usuário");
+            throw;
+         }
+
+
+
       }
    }
 }

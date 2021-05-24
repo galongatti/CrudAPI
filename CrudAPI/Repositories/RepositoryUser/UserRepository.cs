@@ -22,11 +22,11 @@ namespace CrudAPI.Services
          return _context.Users;
       }
 
-      public void Delete(long? id)
+      public bool Delete(long? id)
       {
          User user = _context.Users.SingleOrDefault(x => x.UserId == id);
          _context.Remove(user);
-         _context.SaveChanges();
+         return _context.SaveChanges() > -1;
 
       }
 
@@ -36,10 +36,10 @@ namespace CrudAPI.Services
          return user;
       }
 
-      public void Insert(User user)
+      public bool Insert(User user)
       {
-         _context.Users.Add(user);
-         _context.SaveChanges();
+         _context.Users.AddAsync(user);
+         return _context.SaveChanges() > -1;
       }
 
       public bool UserExist(long? id)
@@ -48,10 +48,10 @@ namespace CrudAPI.Services
          return (user != null);
       }
 
-      public void Update(User user)
+      public bool Update(User user)
       {
          _context.Users.Update(user);
-         _context.SaveChanges();
+         return _context.SaveChanges() > -1;
       }
 
       public User FindByUserName(string UserName)

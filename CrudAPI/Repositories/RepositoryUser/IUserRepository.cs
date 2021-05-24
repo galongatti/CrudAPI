@@ -10,9 +10,9 @@ namespace CrudAPI.Model.Repository
       bool UserExist(long? id);
       IEnumerable<User> All();
       User Find(long? id);
-      void Insert(User user);
-      void Update(User user);
-      void Delete(long? id);
+      bool Insert(User user);
+      bool Update(User user);
+      bool Delete(long? id);
       User FindByUserName(string UserName);
    }
 }
