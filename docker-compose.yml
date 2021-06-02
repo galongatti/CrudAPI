@@ -1,0 +1,38 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  crudapi:
+    image: crudapi
+    container_name: container-api
+    build:
+      context: .
+      dockerfile: CrudAPI/Dockerfile
+    ports:
+      - 5000:5000
+    depends_on: 
+      - container-bd
+    networks: 
+      - api-network
+    volumes:
+      - C:/Users/GaLon/source/repos/CrudAPI:/var/opt/aplicacoes
+
+  container-bd:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: container-bd
+    environment:
+        SA_PASSWORD: 123@ga89LO
+        ACCEPT_EULA: Y
+        MSSQL_PID: Developer
+    networks: 
+      - api-network
+    ports:
+        - 14333:1433
+    volumes: 
+      - E:/dev/bd/CrudAPI:/var/opt/mssql/data
+
+networks: 
+  api-network:
+      name: api-network
+      driver: bridge
