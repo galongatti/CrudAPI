@@ -5,16 +5,22 @@ version: '3.4'
 services:
   crudapi:
     image: crudapi
+    container_name: container-api
     build:
       context: .
       dockerfile: CrudAPI/Dockerfile
     ports:
       - 5000:5000
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on: 
+      - container-bd
+    networks: 
+      - api-network
     volumes:
+      - C:/Users/GaLon/source/repos/CrudAPI:/var/opt/aplicacoes
       - ~/.vsdbg:/remote_debugger:rw
-      
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+
   container-bd:
     image: "mcr.microsoft.com/mssql/server:2019-latest"
     container_name: container-bd
@@ -24,7 +30,12 @@ services:
         MSSQL_PID: Developer
     networks: 
       - api-network
-    
+    ports:
+        - 1433:1433
+    volumes: 
+      - E:/dev/bd/CrudAPI:/var/opt/mssql/data
+
 networks: 
   api-network:
+      name: api-network
       driver: bridge

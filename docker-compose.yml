@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: CrudAPI/Dockerfile
     ports:
-      - 5000:5000
+       - 5000:5000
     depends_on: 
       - container-bd
     networks: 
@@ -28,7 +28,7 @@ services:
     networks: 
       - api-network
     ports:
-        - 14333:1433
+        - 1433:1433
     volumes: 
       - E:/dev/bd/CrudAPI:/var/opt/mssql/data
 

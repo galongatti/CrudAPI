@@ -22,8 +22,7 @@ namespace CrudAPI.Controllers
       {
          _userRepository = new UserRepository(context);
       }
-      [HttpPost]
-      [Route("login")]
+      [HttpPost("Authenticate")]    
       [AllowAnonymous]
       public ActionResult<dynamic> Authenticate([FromBody] User model)
       {
@@ -52,8 +51,7 @@ namespace CrudAPI.Controllers
          };
       }
 
-      [HttpPost]
-      [Route("CadastrarUser")]
+      [HttpPost("CadastrarUser")]
       [Authorize(Roles = "Gerente")]
       public ActionResult<dynamic> CadastrarUser([FromBody] User model)
       {
@@ -78,9 +76,6 @@ namespace CrudAPI.Controllers
             return BadRequest("Erro ao cadastrar usuário");
             throw;
          }
-
-
-
       }
    }
 }

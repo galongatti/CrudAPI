@@ -22,7 +22,7 @@ namespace CrudAPI.Controllers{
       }
 
 
-      [HttpGet("GetAllCategoria"), ActionName("GetAllCategoria")]
+      [HttpGet("GetAllCategoria")]
       public IActionResult GetAllCategoria()
       {
 
@@ -37,7 +37,7 @@ namespace CrudAPI.Controllers{
          }
       }
 
-      [HttpGet("GetCategoria/{id}"), ActionName("GetCategoria")]
+      [HttpGet("GetCategoria/{id}")]
       public IActionResult GetCategoria(long? id)
       {
 
@@ -65,7 +65,7 @@ namespace CrudAPI.Controllers{
       }
 
 
-      [HttpPost("PostCategoria"), ActionName("PostCategoria")]
+      [HttpPost("PostCategoria")]
       public IActionResult PostCategoria([FromBody] Categoria categoria)
       {
 
@@ -86,7 +86,7 @@ namespace CrudAPI.Controllers{
          }
       }
 
-      [HttpPut("PutCategoria/{id}"), ActionName("PutCategoria")]
+      [HttpPut("PutCategoria/{id}")]
       public IActionResult PutCategoria(long? id, [FromBody] Categoria categoria)
       {
 
@@ -107,7 +107,7 @@ namespace CrudAPI.Controllers{
          }
       }
 
-      [HttpDelete("DeleteCategoria/{id}"), ActionName("DeleteCategoria")]
+      [HttpDelete("DeleteCategoria/{id}")]
       public IActionResult DeleteCategoria(long? id)
       {
          try
@@ -123,7 +123,6 @@ namespace CrudAPI.Controllers{
          }
          catch (Exception)
          {
-
             return BadRequest("Erro ao excluir a categoria");
          }
       }
