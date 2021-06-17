@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudAPI", "CrudAPI\CrudAPI.csproj", "{EB160279-92EE-4D7E-A186-D7464C6CED2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LojaAPI", "CrudAPI\LojaAPI.csproj", "{EB160279-92EE-4D7E-A186-D7464C6CED2F}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{340FF7FD-3AFD-4304-AD00-C8BF84EC33A2}"
 EndProject

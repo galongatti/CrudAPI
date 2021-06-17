@@ -65,8 +65,8 @@ namespace CrudAPI.Controllers{
       }
 
 
-      [HttpPost("PostCategoria")]
-      public IActionResult PostCategoria([FromBody] Categoria categoria)
+      [HttpPost("CadastrarCategoria")]
+      public IActionResult CadastrarCategoria([FromBody] Categoria categoria)
       {
 
          try
@@ -86,8 +86,8 @@ namespace CrudAPI.Controllers{
          }
       }
 
-      [HttpPut("PutCategoria/{id}")]
-      public IActionResult PutCategoria(long? id, [FromBody] Categoria categoria)
+      [HttpPut("AtualizarCategoria/{id}")]
+      public IActionResult AtualizarCategoria(long? id, [FromBody] Categoria categoria)
       {
 
          try
